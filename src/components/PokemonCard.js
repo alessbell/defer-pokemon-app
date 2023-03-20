@@ -77,7 +77,7 @@ export default function PokemonCard({
         </div>
       </div>
       <details className="mt-4" open>
-        <summary className="text-lg font-semibold">Regions</summary>
+        <summary className="text-lg font-semibold">Office Regions</summary>
         <div>
           {selectedPokemon ? (
             <ul className="list-disc ml-8">
