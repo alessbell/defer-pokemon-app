@@ -1,6 +1,7 @@
 import Spinner from "./Spinner";
 
 export default function PokemonCard({
+  deferred,
   image,
   pokemon,
   selectedPokemon,
@@ -88,7 +89,7 @@ export default function PokemonCard({
                   </li>
                 ))
               ) : (
-                <Spinner />
+                <Spinner deferred={deferred} />
               )}
             </ul>
           ) : null}

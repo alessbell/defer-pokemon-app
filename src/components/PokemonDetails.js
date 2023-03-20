@@ -36,6 +36,19 @@ const PokemonFragment = gql`
 
 const pokemonDetailsQuery = gql`
   query Pokemon($name: String!) {
+    ...PokemonDetails # @defer
+    regions {
+      results {
+        id
+        name
+      }
+    }
+  }
+  ${PokemonFragment}
+`;
+
+const deferredPokemonDetailsQuery = gql`
+  query Pokemon($name: String!) {
     ...PokemonDetails @defer
     regions {
       results {
@@ -47,14 +60,17 @@ const pokemonDetailsQuery = gql`
   ${PokemonFragment}
 `;
 
-export default function PokemonDetails({ selectedPokemon, image }) {
-  const { data } = useQuery(pokemonDetailsQuery, {
+export default function PokemonDetails({ selectedPokemon, image, deferred }) {
+  const query = deferred ? deferredPokemonDetailsQuery : pokemonDetailsQuery;
+  console.log(deferred, query);
+  const { data } = useQuery(query, {
     variables: { name: selectedPokemon },
-    returnPartialData: true,
+    // returnPartialData: !!deferred,
   });
 
   return (
     <PokemonCard
+      deferred={deferred}
       image={image}
       pokemon={data?.pokemon}
       selectedPokemon={selectedPokemon}

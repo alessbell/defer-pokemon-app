@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { gql, useQuery } from "@apollo/client";
-import Layout from "./components/Layout";
-import PokemonCard from "./components/PokemonCard";
-import PokemonList from "./components/PokemonList";
-import PokemonDetails from "./components/PokemonDetails";
+import Layout from "../components/Layout";
+import PokemonCard from "../components/PokemonCard";
+import PokemonList from "../components/PokemonList";
+import PokemonDetails from "../components/PokemonDetails";
 
 const pokemonsQuery = gql`
   query Pokemons {
@@ -20,7 +20,7 @@ const pokemonsQuery = gql`
   }
 `;
 
-export default function App() {
+export default function App({ deferred }) {
   const { data } = useQuery(pokemonsQuery);
   const [selectedPokemon, setSelectedPokemon] = useState();
 
@@ -35,6 +35,7 @@ export default function App() {
       )}
       RightColumn={() => (
         <EmptyCardOrDetails
+          deferred={deferred}
           selectedPokemon={selectedPokemon}
           image={
             selectedPokemon
@@ -49,9 +50,15 @@ export default function App() {
   );
 }
 
-function EmptyCardOrDetails({ image, selectedPokemon }) {
+function EmptyCardOrDetails({ image, selectedPokemon, deferred }) {
   if (!selectedPokemon) {
     return <PokemonCard image={image} selectedPokemon={selectedPokemon} />;
   }
-  return <PokemonDetails image={image} selectedPokemon={selectedPokemon} />;
+  return (
+    <PokemonDetails
+      image={image}
+      selectedPokemon={selectedPokemon}
+      deferred={deferred}
+    />
+  );
 }

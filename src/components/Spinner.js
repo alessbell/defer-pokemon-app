@@ -1,4 +1,5 @@
-export default function Spinner() {
+export default function Spinner({ deferred }) {
+  // if (deferred) return null;
   return (
     <div className="flex items-center justify-center bg-white w-full">
       <div role="status">
