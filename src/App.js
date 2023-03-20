@@ -1,25 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { gql, useQuery } from "@apollo/client";
+import Layout from "./components/Layout";
+import PokemonCard from "./components/PokemonCard";
+import PokemonList from "./components/PokemonList";
+import PokemonDetails from "./components/PokemonDetails";
 
-function App() {
+const pokemonsQuery = gql`
+  query Pokemons {
+    pokemons {
+      results {
+        id
+        url
+        name
+        image
+        artwork
+        dreamworld
+      }
+    }
+  }
+`;
+
+export default function App() {
+  const { data } = useQuery(pokemonsQuery);
+  const [selectedPokemon, setSelectedPokemon] = useState();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout
+      LeftColumn={() => (
+        <PokemonList
+          pokemon={data?.pokemons?.results}
+          selectedPokemon={selectedPokemon}
+          setSelectedPokemon={setSelectedPokemon}
+        />
+      )}
+      RightColumn={() => (
+        <EmptyCardOrDetails
+          selectedPokemon={selectedPokemon}
+          image={
+            selectedPokemon
+              ? data?.pokemons?.results.find(
+                  (pokemon) => pokemon.name === selectedPokemon
+                ).artwork
+              : null
+          }
+        />
+      )}
+    />
   );
 }
 
-export default App;
+function EmptyCardOrDetails({ image, selectedPokemon }) {
+  if (!selectedPokemon) {
+    return <PokemonCard image={image} selectedPokemon={selectedPokemon} />;
+  }
+  return <PokemonDetails image={image} selectedPokemon={selectedPokemon} />;
+}
