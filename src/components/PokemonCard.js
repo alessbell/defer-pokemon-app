@@ -19,7 +19,11 @@ export default function PokemonCard({
                 Select a team member
               </div>
             )}
-            <img alt="" src={image} className="object-cover object-center" />
+            <img
+              alt=""
+              src={image}
+              className="object-cover object-center h-full"
+            />
           </div>
           <div className="p-6">
             <h2
