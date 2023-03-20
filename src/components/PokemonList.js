@@ -35,7 +35,7 @@ export default function PokemonDetails({
                   src={pokemon.dreamworld}
                   alt=""
                 />
-                <h3 className="capitalize mt-6 text-base font-semibold leading-7 tracking-tight text-gray-900">
+                <h3 className="capitalize mt-6 text-lg font-semibold leading-7 tracking-tight text-gray-900">
                   {pokemon.name}
                 </h3>
               </li>

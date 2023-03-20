@@ -62,10 +62,9 @@ const deferredPokemonDetailsQuery = gql`
 
 export default function PokemonDetails({ selectedPokemon, image, deferred }) {
   const query = deferred ? deferredPokemonDetailsQuery : pokemonDetailsQuery;
-  console.log(deferred, query);
+
   const { data } = useQuery(query, {
     variables: { name: selectedPokemon },
-    // returnPartialData: !!deferred,
   });
 
   return (

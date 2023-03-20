@@ -77,13 +77,13 @@ export default function PokemonCard({
           </div>
         </div>
       </div>
-      <details className="mt-4" open>
-        <summary className="text-lg font-semibold">Office Regions</summary>
+      <details className="mt-6" open>
+        <summary className="text-lg font-semibold">Offices</summary>
         <div>
           {selectedPokemon ? (
             <ul className="list-disc ml-8">
               {regions ? (
-                regions?.results.map((region) => (
+                regions.results.slice(0, 4).map((region) => (
                   <li className="capitalize" key={region.name}>
                     {region.name}
                   </li>
