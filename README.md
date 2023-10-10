@@ -1,10 +1,11 @@
-# @defer Presentation: ChicagoJS
+# Query now, render later: leveraging `@defer` for efficient data delivery
 
 The front-end web application used to demonstrate entity-based defer with [Apollo Router](https://www.apollographql.com/docs/router/), [GraphOS](https://www.apollographql.com/docs/graphos/) and [Apollo Client](https://www.apollographql.com/docs/react) at the March 2023 meetup of ChicaogJS.
 
 ## Slides
 
 - Code: [https://github.com/alessbell/defer-presentation](https://github.com/alessbell/defer-presentation)
+
 ## GraphOS
 
 - Origin: https://main--alessia-bellisarios-rfqf1c.apollographos.net/graphql
