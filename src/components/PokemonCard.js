@@ -16,7 +16,7 @@ export default function PokemonCard({
               ""
             ) : (
               <div className="h-full w-full flex items-center justify-center font-medium">
-                Select a team member
+                Select a Pokémon
               </div>
             )}
             <img
@@ -82,7 +82,7 @@ export default function PokemonCard({
         </div>
       </div>
       <details className="mt-6" open>
-        <summary className="text-lg font-semibold">Offices</summary>
+        <summary className="text-lg font-semibold">Regions</summary>
         <div>
           {selectedPokemon ? (
             <ul className="list-disc ml-8">
