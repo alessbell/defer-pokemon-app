@@ -9,11 +9,10 @@ export default function Layout({ LeftColumn, RightColumn }) {
             <div className="relative flex items-center justify-center py-5 lg:justify-between">
               {/* Logo */}
               <div className="absolute left-0 flex-shrink-0 lg:static">
-                <span className="sr-only">Your Company</span>
                 <img
                   className="h-14 w-auto"
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png?20161023215848"
-                  alt="Your Company"
+                  alt="Pokeball"
                 />
               </div>
             </div>
@@ -27,9 +26,6 @@ export default function Layout({ LeftColumn, RightColumn }) {
               {/* Left column */}
               <div className="grid grid-cols-1 gap-4 lg:col-span-2">
                 <section aria-labelledby="section-1-title">
-                  <h2 className="sr-only" id="section-1-title">
-                    Section title
-                  </h2>
                   <div className="overflow-hidden rounded-lg bg-white shadow min-h-screen">
                     <div className="p-6">
                       <LeftColumn />
@@ -41,9 +37,6 @@ export default function Layout({ LeftColumn, RightColumn }) {
               {/* Right column */}
               <div className="grid grid-cols-1 gap-4">
                 <section aria-labelledby="section-2-title">
-                  <h2 className="sr-only" id="section-2-title">
-                    Section title
-                  </h2>
                   <div className="overflow-hidden rounded-lg bg-white shadow min-h-screen">
                     <div className="p-6">
                       <RightColumn />
